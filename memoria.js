@@ -35,17 +35,33 @@ document.addEventListener('DOMContentLoaded',()=>{
         {
             name: 'whiteward',
             img: 'img/whiteward.png'
-        }
+        },
+        {
+            name: 'blacksabbath',
+            img: 'img/blacksabbath.png'
+        },
+
     ]
     
     const grid = document.querySelector('.grid')
+    var cardsChosen =[]
+    var cardsChosenId =[]
+
+    
     function createBoard(){
-        for(let i=0;i<=cardArray.length;i++){
+        for(let i=0;i<cardArray.length;i++){
             var card = document.createElement('img')
             card.setAttribute('src','img/atras2.PNG')
             card.setAttribute('data-id',i)
+            card.addEventListener('click',flipCard)
             grid.appendChild(card)
         }
+    }
+    function flipCard(){
+        var cardId = this.getAttribute('data-id')
+        cardsChosen.push(cardArray[cardId].name)
+        cardsChosenId.push(cardId)
+        this.setAttribute('src',cardArray[cardId].img)
     }
     createBoard()
     
