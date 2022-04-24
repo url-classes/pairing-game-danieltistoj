@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         },
 
     ]
+
+    cardArray.sort(()=>0.5 - Math.random())
     
     const grid = document.querySelector('.grid')
     var cardsChosen =[]
@@ -75,10 +77,10 @@ document.addEventListener('DOMContentLoaded',()=>{
             cards[optionOneId].setAttribute('src','img/atras2.PNG')
             cards[optionTwoId].setAttribute('src','img/atras2.PNG')
             alert('Le estas dando click a la misma carta')
-        }else if(cardsChosen[0] == cardsChosen[1]){
+        }else if(cardsChosen[0] === cardsChosen[1]){
             alert('Se encontro el par')
-            cards[optionOneId].setAttribute('src','img/atras2.PNG')
-            cards[optionTwoId].setAttribute('src','img/atras2.PNG')
+            cards[optionOneId].setAttribute('src','img/atras3.PNG')
+            cards[optionTwoId].setAttribute('src','img/atras3.PNG')
             cards[optionOneId].removeEventListener('click',flipCard)
             cards[optionTwoId].removeEventListener('click',flipCard)
             cardsWon.push(cardsChosen)
@@ -90,8 +92,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         cardsChosen=[]
         cardsChosenId=[]
         resultDisplay.textContent = cardsWon.length 
-        if(cards.length==cardArray.length/2){
-            resultDisplay.textContent == "Felicidades encontro todos los pares"
+    
+        if(cardsWon.length === cardArray.length/2){
+            resultDisplay.textContent = "Felicidades encontro todos los pares"
         }
     }
     function flipCard(){
@@ -99,7 +102,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src',cardArray[cardId].img)
-        if(cardsChosenId.length == 2){
+        if(cardsChosen.length === 2){
             setTimeout(checkForMatch, 500)
         }
     }
