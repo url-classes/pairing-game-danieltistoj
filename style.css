@@ -1,12 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.contenedor-superior{
+  @apply flex justify-center h-16;
+
+}
+.contenedor-central{
+  @apply flex justify-center
+}
+
 .grid{
-  display: flex;
-  flex-wrap: wrap;
+  @apply flex flex-wrap bg-center;
   height: 150px;
   width: 600px;
 }
-
 img{
   width: auto; 
   max-height: 100%;
 }
-
+body{
+  
+  @apply bg-slate-700;
+}
+.puntuacion{
+  @apply  text-white;
+}
