@@ -21,20 +21,28 @@ document.addEventListener('DOMContentLoaded',()=>{
             img: 'img/disentomb.jpg'
         },
         {
-            name: 'emperor',
-            img: 'img/emperor.jpg'
+            name: 'blacksabbath',
+            img: 'img/blacksabbath.png'
         },
         {
-            name: 'mayhem',
-            img: 'img/mayhem.jpg'
+            name: 'acdc',
+            img: 'img/acdc.png'
         },
         {
-            name: 'mgla',
-            img: 'img/mgla.png'
+            name: 'amygdala',
+            img: 'img/amygdala.PNG'
         },
         {
-            name: 'whiteward',
-            img: 'img/whiteward.png'
+            name: 'darkthrone',
+            img: 'img/darkthrone.PNG'
+        },
+        {
+            name: 'deftones',
+            img: 'img/deftones.jpg'
+        },
+        {
+            name: 'disentomb',
+            img: 'img/disentomb.jpg'
         },
         {
             name: 'blacksabbath',
@@ -46,8 +54,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const grid = document.querySelector('.grid')
     var cardsChosen =[]
     var cardsChosenId =[]
+    const cardsWon = []
+    const resultDisplay= document.querySelector('#score')
 
-    
     function createBoard(){
         for(let i=0;i<cardArray.length;i++){
             var card = document.createElement('img')
@@ -57,11 +66,42 @@ document.addEventListener('DOMContentLoaded',()=>{
             grid.appendChild(card)
         }
     }
+    //comparar tarjetas
+    function checkForMatch(){
+        var cards = document.querySelectorAll('img')
+        const optionOneId = cardsChosenId[0]
+        const optionTwoId = cardsChosenId[1]
+        if(optionOneId == optionTwoId){
+            cards[optionOneId].setAttribute('src','img/atras2.PNG')
+            cards[optionTwoId].setAttribute('src','img/atras2.PNG')
+            alert('Le estas dando click a la misma carta')
+        }else if(cardsChosen[0] == cardsChosen[1]){
+            alert('Se encontro el par')
+            cards[optionOneId].setAttribute('src','img/atras2.PNG')
+            cards[optionTwoId].setAttribute('src','img/atras2.PNG')
+            cards[optionOneId].removeEventListener('click',flipCard)
+            cards[optionTwoId].removeEventListener('click',flipCard)
+            cardsWon.push(cardsChosen)
+        }else{
+            cards[optionOneId].setAttribute('src','img/atras2.PNG')
+            cards[optionTwoId].setAttribute('src','img/atras2.PNG')
+            alert('intenta de nuevo')
+        }
+        cardsChosen=[]
+        cardsChosenId=[]
+        resultDisplay.textContent = cardsWon.length 
+        if(cards.length==cardArray.length/2){
+            resultDisplay.textContent == "Felicidades encontro todos los pares"
+        }
+    }
     function flipCard(){
         var cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src',cardArray[cardId].img)
+        if(cardsChosenId.length == 2){
+            setTimeout(checkForMatch, 500)
+        }
     }
     createBoard()
     
