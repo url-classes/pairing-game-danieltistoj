@@ -5,16 +5,19 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Memoria</title>
     <script type="text/javascript" src="memoria.js"></script>
+    <script type="text/javascript" src="boton.js"></script>
   </head>
   <body>
     <div class ="contenedor-superior">
       <h3 class = "puntuacion">Puntuacion: <span id="score"></span></h3>
     </div>
     <div class = "contenedor-central">
-      <div class="grid"></div>
+      <div class="grid"> </div>
+      <div class="contenedor-inferior">
+        <button id="refresh" onclick="Refresh()">Reiniciar</button>
+      </div>
     </div>
-
-
+    
   </body>
   
 </html>

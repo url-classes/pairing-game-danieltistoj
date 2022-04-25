@@ -7,22 +7,27 @@
 
 }
 .contenedor-central{
-  @apply flex justify-center
+  @apply flex justify-center;
+}
+.contenedor-inferior{
+  @apply flex justify-center;
 }
 
 .grid{
-  @apply flex flex-wrap bg-center;
+  @apply flex flex-wrap ;
   height: 150px;
   width: 600px;
 }
 img{
-  width: auto; 
-  max-height: 100%;
+  @apply w-auto max-h-full;
 }
-body{
-  
+body{ 
   @apply bg-slate-700;
 }
 .puntuacion{
   @apply  text-white;
+}
+
+button{
+  @apply bg-cyan-500 shadow-lg shadow-cyan-500/50 h-16 w-32 rounded-lg ;
 }

@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     var cardsChosenId =[]
     const cardsWon = []
     const resultDisplay= document.querySelector('#score')
+    resultDisplay.textContent = "0"
 
     function createBoard(){
         for(let i=0;i<cardArray.length;i++){
@@ -109,3 +110,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     createBoard()
     
 })
+
+function Refresh(){
+   location.reload()
+}
+/*
+const btnRefresh = document.getElementById('#refresh')
+
+btnRefresh.onclick = function() {
+    console.log("entro")
+}
+*/
